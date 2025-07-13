@@ -3,7 +3,8 @@ const admin = require('firebase-admin');
 const bodyParser = require('body-parser');
 
 // Load Firebase Admin credentials
-const serviceAccount = require('./serviceAccount.json');
+const serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT);
+
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
