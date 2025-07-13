@@ -2,8 +2,13 @@ const express = require('express');
 const admin = require('firebase-admin');
 const bodyParser = require('body-parser');
 
-// Load Firebase Admin credentials
+if (!process.env.SERVICE_ACCOUNT) {
+  console.error("SERVICE_ACCOUNT environment variable is missing!");
+  process.exit(1);
+}
+
 const serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT);
+
 
 
 admin.initializeApp({
